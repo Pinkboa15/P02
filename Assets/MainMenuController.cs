@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainmenuController : MonoBehaviour
+public class MainMenuController : MonoBehaviour
 {
+    [SerializeField] AudioClip _startingSong;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(_startingSong != null)
+        {
+            AudioManager.Instance.PlaySong(_startingSong);
+        }
     }
 }
