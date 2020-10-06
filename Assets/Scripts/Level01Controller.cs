@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Level01Controller : MonoBehaviour
 {
     [SerializeField] Text _currentScoreTextView;
+    [SerializeField] GameObject menu;
 
     int _currentScore;
 
@@ -20,7 +21,7 @@ public class Level01Controller : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ExitLevel();
+            menu.SetActive(true);
         }
     }
     public void IncreaseScore(int scoreIncrease)
@@ -43,5 +44,6 @@ public class Level01Controller : MonoBehaviour
         }
         // load new level
         SceneManager.LoadScene("MainMenu");
+
     }
 }
