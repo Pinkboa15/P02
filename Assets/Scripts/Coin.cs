@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Coin : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    private PlayerHealth healthBonus;
-    private int healamount = 20;
+    Level01Controller controller;
     // Start is called before the first frame update
     private void Awake()
     {
-        healthBonus = player.GetComponent<PlayerHealth>();
+        controller = FindObjectOfType<Level01Controller>();
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
-            healthBonus.HealPlayer(healamount);
+            controller.IncreaseScore(5);
             Destroy(this.gameObject);
         }
-        
+
     }
 }
