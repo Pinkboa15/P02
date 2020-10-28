@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int health = 100;
     PlayerController playerController;
+    [SerializeField] AudioClip _hurtSound;
     private void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -27,6 +28,10 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
+        }
+        else
+        {
+            AudioHelper.PlayClip2D(_hurtSound, 1);
         }
         Debug.Log("Health is now " + health);
         playerController.UpdateHealthSlider();

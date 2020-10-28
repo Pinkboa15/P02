@@ -5,6 +5,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     [SerializeField] GameObject player;
+    [SerializeField] AudioClip _coinSound;
     Level01Controller controller;
     // Start is called before the first frame update
     private void Awake()
@@ -17,6 +18,7 @@ public class Coin : MonoBehaviour
         if (other.tag == "Player")
         {
             controller.IncreaseScore(5);
+            AudioHelper.PlayClip2D(_coinSound,1);
             Destroy(this.gameObject);
         }
 
