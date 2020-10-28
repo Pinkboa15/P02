@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
@@ -13,10 +15,13 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem shoot;
     Vector3 velocity;
     bool isGrounded;
+    public Slider healthSlider;
+    public PlayerHealth playerHealth;
 
     private void Start()
     {
         shoot.Stop();
+        healthSlider.value = playerHealth.health;
     }
 
     // Update is called once per frame 
@@ -37,7 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-        if (Input.GetButtonDown("left shift"))
+        if (Input.GetKey("left shift"))
         {
             speed = 20f;
         }
@@ -55,5 +60,10 @@ public class PlayerController : MonoBehaviour
         }
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+    public void UpdateHealthSlider()
+    {
+        //set the slider value equal to the health
+        healthSlider.value = playerHealth.health;
     }
 }
